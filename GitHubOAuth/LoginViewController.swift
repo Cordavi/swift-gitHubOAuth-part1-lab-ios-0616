@@ -8,6 +8,7 @@
 
 import UIKit
 import Locksmith
+import SafariServices
 
 class LoginViewController: UIViewController {
     
@@ -35,7 +36,11 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(sender: UIButton) {
-    
+      let gitHubOauthURL = NSURL(string: GitHubAPIClient.URLRouter.oauth)
+      if let gitHubOauthURL = gitHubOauthURL {
+         let gitHubOauth = SFSafariViewController(URL: gitHubOauthURL)
+         presentViewController(gitHubOauth, animated: true, completion: nil)
+      }
     }
     
 }
